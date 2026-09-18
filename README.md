@@ -54,7 +54,6 @@ docs/images/executive-report.png
 
 docs/images/detailed-report.png
 
-docs/images/detailed-report.png
 
 ## False Positive Assessment
 
