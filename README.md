@@ -54,6 +54,8 @@ docs/images/executive-report.png
 
 docs/images/detailed-report.png
 
+docs/images/detailed-report.png
+
 ## False Positive Assessment
 
 BugBank is intentionally designed as a QA training application containing known defects and unexpected behaviors.
