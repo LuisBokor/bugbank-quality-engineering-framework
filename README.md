@@ -44,15 +44,15 @@ Dashboard capabilities:
 
 ### Dashboard Preview
 
-> Add dashboard screenshot here
+docs/images/dashboard.png
 
 ### Executive Report
 
-> Add executive report screenshot here
+docs/images/executive-report.png
 
 ### Detailed Report
 
-> Add detailed report screenshot here
+docs/images/detailed-report.png
 
 ## False Positive Assessment
 
