@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.env/
+venv/
+
+# VS Code
+.vscode/
+.idea/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logs
+logs/*.log
+
+# Playwright
+.playwright/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Portfolio artifacts
+videos/
+evidencias/
+
+# Logs
+logs/
+
