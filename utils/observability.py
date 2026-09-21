@@ -92,6 +92,10 @@ class ScenarioRecorder:
     def before_step(self, step):
         self.screenshot(f"02_{safe_name(step.name)[:60]}")
 
+    def capture_failure(self, step):
+        self.failure_reason = f"Step falhou: {step.name}"
+        self.screenshot(f"falha_{safe_name(step.name)[:60]}")
+
     def finish(self, scenario):
         duration = time.perf_counter() - self.started_at
         failed = scenario.status == "failed"

@@ -83,6 +83,90 @@ Future work includes:
 - Investigating false positives
 - Increasing confidence in automated outcomes
 
+## False Positive Assessment Initiative
+
+### Mission
+
+Transform the framework from a successful automated test suite into a Quality Engineering case capable of identifying, validating and documenting real defects.
+
+### Objective
+
+Validate whether automated test success genuinely reflects expected business behavior and system integrity.
+
+### Key Areas of Investigation
+
+- Financial reconciliation
+- Transaction integrity
+- Session management
+- Data persistence
+- Business rule validation
+- Concurrent operations
+- Reliability of automated outcomes
+- Potential false positives
+
+### Expected Outcome
+
+The project evolves from a green test suite into a Quality Engineering case study capable of:
+
+- Detecting real product defects
+- Validating business-critical workflows
+- Documenting reproducible issues
+- Reducing false positives
+- Increasing confidence in automated outcomes
+- Demonstrating quality-driven decision making
+
+### Success Criteria
+
+- New end-to-end business validations implemented
+- Defects documented using a standardized template
+- Root cause analysis performed for identified issues
+- Evidence package generated for every defect
+- Quality Engineering findings documented
+
+### Final Goal
+
+The project should demonstrate not only the ability to automate tests, but also the ability to discover, investigate and communicate quality risks through a structured Quality Engineering approach.
+
+### Planned Initiatives
+
+| ID | Initiative |
+|----|------------|
+| QE-01 | Financial Reconciliation Assessment |
+| QE-02 | Session Integrity Assessment |
+| QE-03 | Concurrent Transaction Assessment |
+| QE-04 | Data Persistence Assessment |
+| QE-05 | Defect Documentation Framework |
+
+## Quality Engineering Findings
+
+### BUG-001 - Duplicate Financial Operation on Concurrent Transfer Submission
+
+**Status:** Confirmed
+
+**Severity:** Critical
+
+**Detection Method:** QE-03 - Concurrent Transaction Assessment
+
+**Summary:**
+
+A single transfer operation generated multiple financial debits when concurrent submissions were performed against the transfer workflow.
+
+**Evidence Available:**
+
+- Screenshots
+- Video Recording
+- HTML Capture
+- Network Logs
+- Console Logs
+- Root Cause Analysis
+
+**Documentation:**
+
+- `docs/bugs/BUG-001-Duplicate-Financial-Operation.md`
+- `docs/quality_engineering_findings.md`
+
+This defect was identified through Quality Engineering assessments focused on concurrency, financial reconciliation and transaction integrity.
+
 ## Future Improvements
 
 Planned next steps:
@@ -105,3 +189,5 @@ The framework combines automated testing, observability, evidence management, ex
 Special attention was given to execution reliability, reporting transparency and the assessment of potential false positives, reinforcing the principle that a successful automated execution does not necessarily imply a defect-free application.
 
 The objective is to support decision-making for QA Engineers, QA Leads, Engineering Managers and other stakeholders through actionable quality insights.
+
+Agent validation completed successfully.

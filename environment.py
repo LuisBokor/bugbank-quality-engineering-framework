@@ -27,6 +27,7 @@ AUTH_SCENARIOS = {
     "TC_09 - Consultar Saldo da Conta",
     "TC_10 - Realizar Transferência sem Saldo Suficiente",
     "TC_12 - Fluxo E2E Completo de Transferência, Extrato, Saldo e Logout",
+    "TC_14 - Session Integrity Assessment",
 }
 
 
@@ -55,6 +56,23 @@ def before_scenario(context, scenario):
         _create_account(context, context.destination)
     if scenario.name == "TC_12 - Fluxo E2E Completo de Transferência, Extrato, Saldo e Logout":
         _prepare_e2e_transfer(context)
+    if scenario.name == "TC_16 - Data Persistence Assessment":
+        context.user_a = AccountContext(**new_account())
+        context.user_b = AccountContext(**new_account())
+        _create_account(context, context.user_a, with_initial_balance=True)
+        _create_account(context, context.user_b)
+    if scenario.name == "TC_13 - Financial Reconciliation Assessment":
+        context.qe_account_a = AccountContext(**new_account())
+        context.qe_account_b = AccountContext(**new_account())
+        context.qe_account_c = AccountContext(**new_account())
+        _create_account(context, context.qe_account_a, with_initial_balance=True)
+        _create_account(context, context.qe_account_b, with_initial_balance=True)
+        _create_account(context, context.qe_account_c)
+    if scenario.name == "TC_15 - Concurrent Transaction Assessment":
+        context.qe_sender = AccountContext(**new_account())
+        context.qe_receiver = AccountContext(**new_account())
+        _create_account(context, context.qe_sender, with_initial_balance=True)
+        _create_account(context, context.qe_receiver)
 
 
 def after_scenario(context, scenario):
