@@ -98,8 +98,10 @@ Planned next steps:
 
 ## Portfolio Value
 
-This project was designed not only to automate tests, but also to demonstrate Quality Engineering practices including observability, reporting, evidence management and quality-driven analysis.
+This project was designed to demonstrate Quality Engineering practices beyond traditional test automation.
 
-A special focus was placed on validating the trustworthiness of automated outcomes through continuous assessment of potential false positives and business-rule coverage.
+The framework combines automated testing, observability, evidence management, executive reporting and quality-driven analysis to provide visibility for both technical and business stakeholders.
 
-The objective is to provide visibility not only for testers, but also for QA Leads, Engineering Managers and business stakeholders.
+Special attention was given to execution reliability, reporting transparency and the assessment of potential false positives, reinforcing the principle that a successful automated execution does not necessarily imply a defect-free application.
+
+The objective is to support decision-making for QA Engineers, QA Leads, Engineering Managers and other stakeholders through actionable quality insights.
