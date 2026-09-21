@@ -5,15 +5,36 @@ Quality Engineering framework developed with Python, Playwright and Behave (BDD)
 ### Highlights
 
 - 12 automated business scenarios
-- 4 functional modules covered
+- 4 business modules covered
 - Playwright + Behave + BDD architecture
 - Page Object Model (POM)
-- Automatic screenshot and video capture
+- Automated screenshot and video capture
 - Browser observability and network monitoring
-- Executive Dashboard
+- Executive Dashboard with Quality Score metrics
 - HTML, JSON, CSV and XLSX reporting
-- Quality Score metrics
 - Automated evidence packaging
+- False positive assessment initiative
+
+## Executive Dashboard
+
+The framework automatically generates an Executive Dashboard designed for QA Managers, Tech Leads and stakeholders.
+
+Dashboard capabilities:
+
+- Quality Score calculation
+- Pass × Fail visualization
+- Functional coverage analysis
+- Execution time metrics
+- Scenario drill-down
+- Screenshot gallery
+- Video playback
+- Execution logs
+- Test data inspection
+- HTML capture access
+
+### Dashboard Preview
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/c133a124-1806-4f73-b6a2-539007e6b28e" />
 
 ## Results
 
@@ -39,27 +60,6 @@ Artifacts generated during execution:
 - Screenshots
 - Execution Logs
 - HTML Capture
-
-## Executive Dashboard
-
-The framework automatically generates an Executive Dashboard designed for QA Managers, Tech Leads and stakeholders.
-
-Dashboard capabilities:
-
-- Quality Score calculation
-- Pass × Fail visualization
-- Functional coverage analysis
-- Execution time metrics
-- Scenario drill-down
-- Screenshot gallery
-- Video playback
-- Execution logs
-- Test data inspection
-- HTML capture access
-
-### Dashboard Preview
-
-<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/c133a124-1806-4f73-b6a2-539007e6b28e" />
 
 ## False Positive Assessment
 
