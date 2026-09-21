@@ -1,3 +1,20 @@
+## Executive Summary
+
+Quality Engineering framework developed with Python, Playwright and Behave (BDD), featuring automated test execution, executive reporting, observability, evidence collection and business-oriented quality metrics.
+
+### Highlights
+
+- 12 automated business scenarios
+- 4 functional modules covered
+- Playwright + Behave + BDD architecture
+- Page Object Model (POM)
+- Automatic screenshot and video capture
+- Browser observability and network monitoring
+- Executive Dashboard
+- HTML, JSON, CSV and XLSX reporting
+- Quality Score metrics
+- Automated evidence packaging
+
 ## Results
 
 Latest full execution:
@@ -46,8 +63,6 @@ Dashboard capabilities:
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/c133a124-1806-4f73-b6a2-539007e6b28e" />
 
-
-
 ## False Positive Assessment
 
 BugBank is intentionally designed as a QA training application containing known defects and unexpected behaviors.
@@ -82,3 +97,11 @@ Planned next steps:
 - Defect correlation metrics
 - False positive assessment initiative
 - Expanded reporting capabilities
+
+## Portfolio Value
+
+This project was designed not only to automate tests, but also to demonstrate Quality Engineering practices including observability, reporting, evidence management and quality-driven analysis.
+
+A special focus was placed on validating the trustworthiness of automated outcomes through continuous assessment of potential false positives and business-rule coverage.
+
+The objective is to provide visibility not only for testers, but also for QA Leads, Engineering Managers and business stakeholders.
