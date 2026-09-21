@@ -32,8 +32,6 @@ Latest full execution:
 Artifacts generated during execution:
 
 - Executive Dashboard
-- Executive Report
-- Detailed Report
 - JSON Report
 - CSV Export
 - XLSX Export
