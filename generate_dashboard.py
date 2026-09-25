@@ -118,7 +118,10 @@ def main():
         f"<span class='classification'>{escape(str(classification))}</span></div>"
     )
 
-    ids = [escape(str(item.get("test_id", ""))) for item in records]
+    duration_labels = [escape(str(item.get("test_id", "")).replace("_", "")) for item in records]
+    duration_hover = [
+        escape(f"{item.get('test_id', '')} - {item.get('scenario', '')}") for item in records
+    ]
     durations = [item.get("duration_seconds", 0) for item in records]
     hist_x = [escape(str(h.get("executed_at", ""))) for h in history]
     hist_y = [h.get("quality_score", 0) for h in history]
@@ -191,7 +194,7 @@ const layout = {{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font
 const config = {{responsive:true,displayModeBar:false,displaylogo:false}};
 Plotly.newPlot('g_passfail',[{{type:'pie',labels:['Aprovados','Reprovados'],values:[{passed},{failed}],marker:{{colors:['#3fb950','#f85149']}},hole:.45}}],{{...layout,title:'Pass × Fail'}},config);
 Plotly.newPlot('g_coverage',[{{type:'bar',x:{list(coverage)},y:{list(coverage.values())},marker:{{color:'#58a6ff'}}}}],{{...layout,title:'Cobertura por Funcionalidade'}},config);
-Plotly.newPlot('g_duration',[{{type:'bar',x:{ids},y:{durations},marker:{{color:'#d29922'}}}}],{{...layout,title:'Tempo por Cenário (s)'}},config);
+Plotly.newPlot('g_duration',[{{type:'bar',x:{duration_labels},y:{durations},text:{duration_hover},hovertemplate:'%{{text}}<br>%{{y}}s<extra></extra>',marker:{{color:'#d29922'}}}}],{{...layout,title:'Tempo por Cenário (s)',xaxis:{{tickfont:{{size:9}}}}}},config);
 Plotly.newPlot('g_history',[{{type:'scatter',mode:'lines+markers',x:{hist_x},y:{hist_y},line:{{color:'#3fb950'}}}}],{{...layout,title:'Histórico de Execuções (Quality Score)'}},config);
 window.addEventListener('resize',()=>{{
   ['g_passfail','g_coverage','g_duration','g_history'].forEach(id=>Plotly.Plots.resize(document.getElementById(id)));
