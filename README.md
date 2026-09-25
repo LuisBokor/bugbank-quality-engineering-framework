@@ -34,7 +34,7 @@ Dashboard capabilities:
 
 ### Dashboard Preview
 
-docs/images/dashboard.png
+<img src="docs/images/png
 
 ## Results
 
