@@ -34,7 +34,7 @@ Dashboard capabilities:
 
 ### Dashboard Preview
 
-<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/c133a124-1806-4f73-b6a2-539007e6b28e" />
+docs/images/dashboard.png
 
 ## Results
 
