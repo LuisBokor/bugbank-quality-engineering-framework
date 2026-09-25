@@ -2,6 +2,7 @@
 
 Funcionalidade: Quality Engineering - Avaliação de Qualidade
 
+  @regression @quality_engineering
   Cenário: TC_13 - Financial Reconciliation Assessment
     Dado que a conta A está autenticada com saldo inicial
     E a conta B possui saldo inicial
@@ -18,6 +19,7 @@ Funcionalidade: Quality Engineering - Avaliação de Qualidade
     E o extrato da conta C deverá conter um único crédito de 100
     E o total financeiro do sistema deverá estar reconciliado
 
+  @regression @quality_engineering
   Cenário: TC_14 - Session Integrity Assessment
     Dado que o usuário está autenticado
     Quando clicar na opção de logout
@@ -31,6 +33,7 @@ Funcionalidade: Quality Engineering - Avaliação de Qualidade
     Então o acesso à área protegida deverá ser bloqueado
     E a sessão deverá permanecer encerrada
 
+  @known_defect @bug001 @quality_engineering
   Cenário: TC_15 - Concurrent Transaction Assessment
     Dado que o usuário remetente está autenticado com saldo inicial suficiente
     E existe uma conta receptora válida
@@ -42,6 +45,7 @@ Funcionalidade: Quality Engineering - Avaliação de Qualidade
     E o extrato do receptor deverá conter um único crédito da operação
     E não deverá existir operação financeira duplicada
 
+  @regression @quality_engineering
   Cenário: TC_16 - Data Persistence Assessment
     Dado que o usuário A está autenticado com saldo inicial
     E existe uma conta destinatária válida para transferência

@@ -2,12 +2,14 @@
 
 Funcionalidade: Cadastro de contas
 
+  @regression
   Cenário: TC_01 - Criar Conta
     Dado que o usuário está na tela de cadastro
     Quando informar nome, e-mail, senha e confirmação de senha válidos
     E clicar em "Cadastrar"
     Então a conta deverá ser criada com sucesso
 
+  @regression
   Cenário: TC_03 - Criar Conta com Saldo Inicial
     Dado que o usuário está na tela de cadastro
     Quando informar nome, e-mail, senha e confirmação de senha válidos
@@ -16,6 +18,7 @@ Funcionalidade: Cadastro de contas
     Então a conta deverá ser criada com sucesso
     E a conta deverá possuir saldo inicial disponível
 
+  @regression
   Cenário: TC_04 - Validar Campos Obrigatórios do Cadastro
     Dado que o usuário está na tela de cadastro
     Quando deixar os campos obrigatórios em branco
@@ -23,6 +26,7 @@ Funcionalidade: Cadastro de contas
     Então mensagens de validação deverão ser apresentadas
     E a conta não deverá ser criada
 
+  @regression
   Cenário: TC_05 - Cadastrar Conta com E-mail Já Utilizado
     Dado que existe uma conta cadastrada com determinado e-mail
     Quando o usuário tentar criar uma nova conta utilizando o mesmo e-mail
@@ -30,6 +34,7 @@ Funcionalidade: Cadastro de contas
     Então o sistema deverá exibir uma mensagem de erro
     E a conta não deverá ser criada
 
+  @regression
   Cenário: TC_06 - Cadastrar Conta com Confirmação de Senha Divergente
     Dado que o usuário está na tela de cadastro
     Quando informar uma senha válida

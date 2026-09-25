@@ -2,12 +2,14 @@
 
 Funcionalidade: Saldo, extrato e sessão
 
+  @regression
   Cenário: TC_09 - Consultar Saldo da Conta
     Dado que o usuário está autenticado
     Quando acessar a página inicial da conta
     Então o saldo disponível deverá ser exibido
     E o valor exibido deverá corresponder ao saldo da conta
 
+  @regression
   Cenário: TC_12 - Fluxo E2E Completo de Transferência, Extrato, Saldo e Logout
     Dado que existe uma transferência realizada entre o usuário A e o usuário B
     Quando o usuário A realizar login

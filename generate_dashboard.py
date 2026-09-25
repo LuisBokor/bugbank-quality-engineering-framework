@@ -112,6 +112,11 @@ def main():
         ("Tempo Total", f"{duration}s"),
     )
     cards = "".join(f"<div class='card'><small>{label}</small><strong>{value}</strong></div>" for label, value in kpis)
+    cards += (
+        f"<div class='card score-card'><small>Quality Score</small>"
+        f"<strong>{score}<span class='unit'>/100</span></strong>"
+        f"<span class='classification'>{escape(str(classification))}</span></div>"
+    )
 
     ids = [escape(str(item.get("test_id", ""))) for item in records]
     durations = [item.get("duration_seconds", 0) for item in records]
@@ -124,43 +129,51 @@ def main():
 <html lang='pt-br'>
 <head>
 <meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
 <title>BugBank — Dashboard Executivo</title>
 <script src='https://cdn.plot.ly/plotly-2.35.2.min.js'></script>
 <style>
-body{{font-family:'Segoe UI',Arial,sans-serif;background:#0f1720;color:#e6edf3;margin:0;padding:32px}}
-h1{{color:#58a6ff;margin:0 0 4px}}
-.subtitle{{color:#8b98a5;margin-bottom:24px}}
-.cards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:20px 0}}
-.card{{background:#161d27;border:1px solid #2a3542;border-radius:10px;padding:16px}}
-.card small{{color:#8b98a5;text-transform:uppercase;letter-spacing:.5px}}
-.card strong{{display:block;font-size:26px;margin-top:6px}}
-.score{{background:#161d27;border:1px solid #2a3542;border-radius:10px;padding:20px;margin:20px 0;display:flex;align-items:center;gap:24px}}
-.score .value{{font-size:42px;font-weight:700;color:#3fb950}}
-.score .label{{font-size:18px;color:#8b98a5}}
-.graphs{{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}}
-.graph{{background:#161d27;border:1px solid #2a3542;border-radius:10px;padding:12px}}
-h2{{color:#58a6ff;border-bottom:1px solid #2a3542;padding-bottom:8px}}
-.scenario{{background:#161d27;border:1px solid #2a3542;border-radius:10px;margin:10px 0;padding:14px 18px}}
-.scenario summary{{cursor:pointer;font-size:15px}}
-.scenario .body{{margin-top:14px}}
-.scenario video{{border-radius:8px;background:#000}}
+*{{box-sizing:border-box}}
+body{{font-family:'Segoe UI',Arial,sans-serif;background:#0f1720;color:#e6edf3;margin:0;padding:18px 28px 28px;font-size:14px}}
+.container{{max-width:1920px;margin:0 auto}}
+h1{{color:#58a6ff;margin:0 0 2px;font-size:22px}}
+.subtitle{{color:#8b98a5;margin:0 0 14px;font-size:12px}}
+.cards{{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:0 0 14px}}
+.card{{background:#161d27;border:1px solid #2a3542;border-radius:8px;padding:10px 14px;min-width:0}}
+.card small{{color:#8b98a5;text-transform:uppercase;letter-spacing:.4px;font-size:10px;display:block}}
+.card strong{{display:block;font-size:20px;margin-top:4px;line-height:1.15;white-space:nowrap}}
+.card.score-card{{background:linear-gradient(135deg,#132a1c,#161d27);border-color:#2a4a35}}
+.card.score-card strong{{color:#3fb950;font-size:20px}}
+.card.score-card .unit{{font-size:12px;color:#8b98a5;font-weight:400}}
+.card.score-card .classification{{display:block;font-size:11px;color:#8b98a5;font-weight:600;margin-top:2px}}
+.graphs{{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin:0 0 18px}}
+.graph{{background:#161d27;border:1px solid #2a3542;border-radius:8px;padding:6px;height:300px}}
+h2{{color:#58a6ff;border-bottom:1px solid #2a3542;padding-bottom:6px;font-size:16px;margin:20px 0 10px}}
+.scenario{{background:#161d27;border:1px solid #2a3542;border-radius:10px;margin:8px 0;padding:12px 16px}}
+.scenario summary{{cursor:pointer;font-size:14px}}
+.scenario .body{{margin-top:12px}}
+.scenario video{{border-radius:8px;background:#000;max-width:480px}}
 .shots img{{max-width:24%;border-radius:6px;margin:8px 8px 0 0;border:1px solid #2a3542}}
 .links a{{color:#58a6ff;margin-right:4px}}
-.meta{{color:#8b98a5;font-size:13px}}
+.meta{{color:#8b98a5;font-size:12px}}
 .pass{{color:#3fb950;font-weight:700}}
 .fail{{color:#f85149;font-weight:700}}
+@media (max-width:1400px){{
+  .graphs{{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}}
+  .cards{{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}}
+}}
+@media (max-height:820px){{
+  .graph{{height:250px}}
+  body{{padding:14px 22px 22px}}
+}}
 </style>
 </head>
 <body>
+<div class='container'>
 <h1>BugBank · Dashboard Executivo</h1>
 <p class='subtitle'>Execução: {escape(str(summary.get('generated_at', '—')))} · Ambiente: {escape(str(summary.get('environment', '—')))} · Browser: {escape(str(summary.get('browser', '—')))}</p>
 
 <section class='cards'>{cards}</section>
-
-<section class='score'>
-  <div class='value'>{score}<small style='font-size:18px;color:#8b98a5'>/100</small></div>
-  <div><div class='label'>Quality Score</div><strong>{escape(str(classification))}</strong></div>
-</section>
 
 <section class='graphs'>
   <div class='graph' id='g_passfail'></div>
@@ -171,16 +184,22 @@ h2{{color:#58a6ff;border-bottom:1px solid #2a3542;padding-bottom:8px}}
 
 <h2>Cenários</h2>
 {scenarios_html}
+</div>
 
 <script>
-const layout = {{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{{color:'#e6edf3'}},margin:{{t:40}}}};
-Plotly.newPlot('g_passfail',[{{type:'pie',labels:['Aprovados','Reprovados'],values:[{passed},{failed}],marker:{{colors:['#3fb950','#f85149']}},hole:.45}}],{{...layout,title:'Pass × Fail'}});
-Plotly.newPlot('g_coverage',[{{type:'bar',x:{list(coverage)},y:{list(coverage.values())},marker:{{color:'#58a6ff'}}}}],{{...layout,title:'Cobertura por Funcionalidade'}});
-Plotly.newPlot('g_duration',[{{type:'bar',x:{ids},y:{durations},marker:{{color:'#d29922'}}}}],{{...layout,title:'Tempo por Cenário (s)'}});
-Plotly.newPlot('g_history',[{{type:'scatter',mode:'lines+markers',x:{hist_x},y:{hist_y},line:{{color:'#3fb950'}}}}],{{...layout,title:'Histórico de Execuções (Quality Score)'}});
+const layout = {{paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{{color:'#e6edf3',size:11}},margin:{{t:32,b:32,l:36,r:16}},autosize:true}};
+const config = {{responsive:true,displayModeBar:false,displaylogo:false}};
+Plotly.newPlot('g_passfail',[{{type:'pie',labels:['Aprovados','Reprovados'],values:[{passed},{failed}],marker:{{colors:['#3fb950','#f85149']}},hole:.45}}],{{...layout,title:'Pass × Fail'}},config);
+Plotly.newPlot('g_coverage',[{{type:'bar',x:{list(coverage)},y:{list(coverage.values())},marker:{{color:'#58a6ff'}}}}],{{...layout,title:'Cobertura por Funcionalidade'}},config);
+Plotly.newPlot('g_duration',[{{type:'bar',x:{ids},y:{durations},marker:{{color:'#d29922'}}}}],{{...layout,title:'Tempo por Cenário (s)'}},config);
+Plotly.newPlot('g_history',[{{type:'scatter',mode:'lines+markers',x:{hist_x},y:{hist_y},line:{{color:'#3fb950'}}}}],{{...layout,title:'Histórico de Execuções (Quality Score)'}},config);
+window.addEventListener('resize',()=>{{
+  ['g_passfail','g_coverage','g_duration','g_history'].forEach(id=>Plotly.Plots.resize(document.getElementById(id)));
+}});
 </script>
 </body>
 </html>"""
+
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(html, encoding="utf-8")

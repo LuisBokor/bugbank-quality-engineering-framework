@@ -167,6 +167,17 @@ A single transfer operation generated multiple financial debits when concurrent 
 
 This defect was identified through Quality Engineering assessments focused on concurrency, financial reconciliation and transaction integrity.
 
+## Test Execution Strategy
+
+The suite is intentionally split into a stable regression suite and a known defect validation suite, so that a confirmed bug never blocks or gets masked by the regression pipeline.
+
+- **Regression scenarios must remain green.** TC_01–TC_14 and TC_16 are tagged `@regression` and validate stable, expected business behavior. Any failure in this suite represents a real regression.
+- **TC_15 intentionally validates BUG-001.** It is tagged `@known_defect`, `@bug001` and `@quality_engineering`, and is expected to fail until the duplicate financial operation defect is actually fixed. It must not be skipped, retried or have its assertions weakened.
+- **Quality Engineering scenarios focus on defect discovery and business validation.** TC_13, TC_14, TC_15 and TC_16 are tagged `@quality_engineering`, targeting financial reconciliation, session integrity, concurrency and data persistence beyond happy-path automation.
+- **Known defects are not bypassed or masked.** A failing `@known_defect` result is treated as valid evidence that the defect is still present, not as a false positive to be suppressed.
+
+Full details and execution commands are documented in [docs/test_execution_strategy.md](docs/test_execution_strategy.md).
+
 ## Future Improvements
 
 Planned next steps:

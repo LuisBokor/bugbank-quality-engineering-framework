@@ -2,6 +2,7 @@
 
 Funcionalidade: Transferências
 
+  @regression
   Cenário: TC_10 - Realizar Transferência sem Saldo Suficiente
     Dado que o usuário está autenticado
     E possui saldo insuficiente para realizar uma transferência
@@ -12,6 +13,7 @@ Funcionalidade: Transferências
     E a transferência não deverá ser realizada
     E o saldo da conta deverá permanecer inalterado
 
+  @regression
   Cenário: TC_11 - Fluxo E2E de Cadastro, Login e Transferência entre Contas
     Dado que o usuário A está na tela de cadastro
     Quando criar uma conta com saldo inicial
