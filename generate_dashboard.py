@@ -118,11 +118,12 @@ def main():
         f"<span class='classification'>{escape(str(classification))}</span></div>"
     )
 
-    duration_labels = [escape(str(item.get("test_id", "")).replace("_", "")) for item in records]
+    duration_records = sorted(records, key=scenario_sort_key)
+    duration_labels = [escape(str(item.get("test_id", "")).replace("_", "")) for item in duration_records]
     duration_hover = [
-        escape(f"{item.get('test_id', '')} - {item.get('scenario', '')}") for item in records
+        escape(f"{item.get('test_id', '')} - {item.get('scenario', '')}") for item in duration_records
     ]
-    durations = [item.get("duration_seconds", 0) for item in records]
+    durations = [item.get("duration_seconds", 0) for item in duration_records]
     hist_x = [escape(str(h.get("executed_at", ""))) for h in history]
     hist_y = [h.get("quality_score", 0) for h in history]
     ordered = sorted(records, key=scenario_sort_key)
